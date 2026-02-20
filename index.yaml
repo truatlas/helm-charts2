@@ -1,0 +1,26 @@
+apiVersion: v1
+entries:
+  clearml:
+  - apiVersion: v2
+    appVersion: 2.4.0-722
+    created: "2026-02-20T21:02:15.171696602+03:00"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 25.3.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.5.0
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 8.5.1
+    digest: 22e7c5a0fe60897826725178666880257190851f0ad8b01eeb3ea48ac08967a0
+    name: clearml
+    type: application
+    urls:
+    - https://truatlas.github.io/helm-charts2/clearml-26.2.1.tgz
+    version: 26.2.1
+generated: "2026-02-20T21:02:15.155337743+03:00"

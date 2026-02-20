@@ -1,0 +1,12 @@
+dependencies:
+- name: redis
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 25.3.0
+- name: mongodb
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 18.5.0
+- name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 8.5.1
+digest: sha256:d993a416ccb701f7829c4dc9336d4bdf7881842c765f7018181c591798bb446b
+generated: "2026-02-20T20:45:50.773376923+03:00"

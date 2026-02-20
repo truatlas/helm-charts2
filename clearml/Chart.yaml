@@ -1,0 +1,21 @@
+apiVersion: v2
+name: clearml
+version: 26.2.1
+type: application
+appVersion: "2.4.0-722"
+
+dependencies:
+  - name: redis
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 25.3.0
+    condition: redis.enabled
+
+  - name: mongodb
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 18.5.0
+    condition: mongodb.enabled
+
+  - name: elasticsearch
+    repository: https://helm.elastic.co
+    version: 8.5.1
+    condition: elasticsearch.enabled
