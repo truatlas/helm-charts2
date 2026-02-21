@@ -447,7 +447,6 @@ elasticsearch:
   esJavaOpts: "-Xms2g -Xmx2g"
   esConfig:
     elasticsearch.yml: |
-      discovery.type: single-node
       xpack.security.enabled: false
       xpack.security.http.ssl.enabled: false
       xpack.security.transport.ssl.enabled: false
@@ -459,6 +458,8 @@ elasticsearch:
       cluster.routing.allocation.disk.watermark.flood_stage: 500mb
       reindex.remote.whitelist: "*.*"
   extraEnvs:
+    - name: "cluster.initial_master_nodes"
+      value: ""
     - name: cluster.routing.allocation.node_initial_primaries_recoveries
       value: "500"
     - name: bootstrap.memory_lock
