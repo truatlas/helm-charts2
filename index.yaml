@@ -3,7 +3,7 @@ entries:
   clearml:
   - apiVersion: v2
     appVersion: 2.4.0-722
-    created: "2026-02-21T15:23:41.362135708+03:00"
+    created: "2026-02-21T15:41:03.057274071+03:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -17,10 +17,10 @@ entries:
       name: elasticsearch
       repository: https://wiremind.github.io/wiremind-helm-charts
       version: 8.17.0
-    digest: 41f7294d1f5c326cc51490077fe2d9661b5b4554918a4083ba986873a7c00058
+    digest: 7931f4f04b68f8055dc8207a3849a5eb678dd69e45274bf8860e2ceff2dc1886
     name: clearml
     type: application
     urls:
-    - https://truatlas.github.io/helm-charts2/clearml-26.2.3.tgz
-    version: 26.2.3
-generated: "2026-02-21T15:23:41.347303+03:00"
+    - https://truatlas.github.io/helm-charts2/clearml-26.2.4.tgz
+    version: 26.2.4
+generated: "2026-02-21T15:41:03.04245976+03:00"
