@@ -6,7 +6,7 @@ dependencies:
   repository: oci://registry-1.docker.io/bitnamicharts
   version: 18.5.0
 - name: elasticsearch
-  repository: https://helm.elastic.co
-  version: 8.5.1
-digest: sha256:d993a416ccb701f7829c4dc9336d4bdf7881842c765f7018181c591798bb446b
-generated: "2026-02-20T20:45:50.773376923+03:00"
+  repository: https://wiremind.github.io/wiremind-helm-charts
+  version: 8.17.0
+digest: sha256:eec48bbe4cb246e92a4d90a9604cb3da8c89b332173e566350f13a1b0812f945
+generated: "2026-02-21T14:19:51.296873396+03:00"

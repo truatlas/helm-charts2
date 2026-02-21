@@ -429,7 +429,7 @@ mongodb:
     ## If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
     storageClass: null
 
-# -- Configuration from https://github.com/elastic/helm-charts/blob/7.16/elasticsearch/values.yaml
+# -- Configuration from https://artifacthub.io/packages/helm/wiremind/elasticsearch
 elasticsearch:
   enabled: true
   image: "elasticsearch"
@@ -438,30 +438,31 @@ elasticsearch:
   replicas: 1
   clusterName: clearml-elastic
   roles:
-    master: "true"
-    ingest: "true"
-    data: "true"
-    remote_cluster_client: "true"
+    - master
+    - ingest
+    - data
+    - ml
+    - remote_cluster_client
   httpPort: 9200
-  minimumMasterNodes: 1
   esJavaOpts: "-Xms2g -Xmx2g"
   esConfig:
     elasticsearch.yml: |
       discovery.type: single-node
       xpack.security.enabled: false
+      xpack.security.http.ssl.enabled: false
+      xpack.security.transport.ssl.enabled: false
+      xpack.ml.enabled: false
       http.compression: true
       http.compression_level: 7
+      cluster.routing.allocation.disk.watermark.low: 500mb
+      cluster.routing.allocation.disk.watermark.high: 500mb
+      cluster.routing.allocation.disk.watermark.flood_stage: 500mb
+      reindex.remote.whitelist: "*.*"
   extraEnvs:
     - name: cluster.routing.allocation.node_initial_primaries_recoveries
       value: "500"
-    - name: cluster.routing.allocation.disk.watermark.low
-      value: "500mb"
-    - name: cluster.routing.allocation.disk.watermark.high
-      value: "500mb"
-    - name: cluster.routing.allocation.disk.watermark.flood_stage
-      value: "500mb"
-    - name: reindex.remote.whitelist
-      value: "*.*"
+    - name: bootstrap.memory_lock
+      value: "false"
   sysctlInitContainer:
     enabled: true
   resources:
@@ -475,8 +476,12 @@ elasticsearch:
     enabled: true
   volumeClaimTemplate:
     accessModes: ["ReadWriteOnce"]
-    storageClassName: null
+    # storageClassName: "your-storage-class" # Раскомментируйте и укажите свой, если нужно
     resources:
       requests:
         storage: 20Gi
-  clusterHealthCheckParams: "wait_for_status=yellow&timeout=5s"
+  rbac:
+    create: true
+
+  # ПРАВИЛЬНЫЙ ХЕЛСЧЕК (чтобы helm install не завис):
+  clusterHealthCheckParams: "wait_for_status=yellow&timeout=50s"
